@@ -1,0 +1,17 @@
+Options -Indexes
+RewriteEngine On
+
+# Redirect all requests to the public directory
+RewriteCond %{REQUEST_URI} !^/public
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Protect sensitive files
+<Files .env>
+Order Allow,Deny
+Deny from all
+</Files>
+
+<Files .htaccess>
+Order Allow,Deny
+Deny from all
+</Files>

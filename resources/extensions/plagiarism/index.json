@@ -1,0 +1,10 @@
+{
+    "extension_name": "plagiarism",
+    "files": [
+        "resources/views/panel/layout/extsettingsheaders/plagiarism_header.blade.php",
+        "app/Http/Controllers/PlagiarismController.php",
+        "resources/views/panel/user/openai/plagiarism/index.blade.php",
+        "resources/views/panel/admin/settings/plagiarism.blade.php",
+        "resources/views/panel/user/openai/detectaicontent/index.blade.php"
+    ]
+}
