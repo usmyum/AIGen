@@ -395,6 +395,22 @@ class MenuService
                 'active_condition' => null,
                 'show_condition' => (bool)Helper::setting('feature_ai_speech_to_text', null, $setting),
             ],
+            'web_crawler' => [
+                'parent_key' => null,
+                'key' => 'web_crawler',
+                'route' => 'dashboard.user.crawler.crawler',
+                'route_slug' => 'web_crawler',
+                'label' => 'Web Crawler',
+                'icon' => 'tabler-spider',
+                'svg' => null,
+                'order' => 16,
+                'is_active' => true,
+                'params' => [],
+                'type' => 'item',
+                'extension' => null,
+                'active_condition' => null,
+                'show_condition' => true,
+            ],
             'ai_voiceover' => [
                 'parent_key' => null,
                 'key' => 'ai_voiceover',
@@ -755,7 +771,6 @@ class MenuService
                 'show_condition' => true,
                 'is_admin' => true
             ],
-
             'google_adsense' => [
                 'parent_key' => null,
                 'key' => 'google_adsense',

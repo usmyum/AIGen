@@ -1226,7 +1226,7 @@
                                     {{ __('Site Health') }}
                                 </span>
                             </a>
-                        </li> 
+                        </li>
                         @if (!view()->exists('panel.admin.custom.user.header-menu'))
                             <!-- <li class="nav-item">
                                 <a class="nav-link {{ activeRoute('dashboard.admin.license.index') }}"
