@@ -114,7 +114,6 @@ class SettingsController extends Controller
             $settings->feature_ai_voiceover = $request->feature_ai_voiceover;
             $settings->feature_affilates = $request->feature_affilates;
             $settings->user_api_option = $request->user_api_option;
-            $settings->feature_ai_article_wizard = $request->feature_ai_article_wizard;
             $settings->feature_ai_vision = $request->feature_ai_vision;
             $settings->feature_ai_pdf = $request->feature_ai_pdf;
             $settings->feature_ai_youtube = $request->feature_ai_youtube;
@@ -217,7 +216,6 @@ class SettingsController extends Controller
     public function toggleOpenaiTemplateStatus($settings)
     {
         $templates = [
-            'ai_article_wizard_generator' => $settings->feature_ai_article_wizard,
             'ai_writer' => $settings->feature_ai_writer,
             'ai_rewriter' => $settings->feature_ai_rewriter,
             'ai_chat_image' => $settings->feature_ai_chat_image,

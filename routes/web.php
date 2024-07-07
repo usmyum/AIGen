@@ -114,3 +114,4 @@ if (file_exists(base_path('routes/custom_routes_web.php'))) {
 require __DIR__.'/auth.php';
 require __DIR__.'/panel.php';
 require __DIR__.'/webhooks.php';
+require __DIR__.'/crawler.php';
