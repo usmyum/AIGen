@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Crawler\Search;
 use App\Models\Crawler\Keyword;
 use App\Models\Crawler\CrawledData;
@@ -24,10 +23,6 @@ class CrawlerController extends Controller
         $keywords = explode(',', $request->input('keywords')); // Assume keywords are comma-separated
         $user = Auth::user();
 
-        ################################################
-        // move the below code into the service once experimenting done
-        ################################################
-
         // Store the search
         $search = Search::create([
             'user_id' => $user->id,
@@ -44,7 +39,8 @@ class CrawlerController extends Controller
         // Perform the crawling
         Crawler::create()
             ->setCrawlObserver(new CustomCrawlObserver($search, $keywords))
-            ->setTotalCrawlLimit(10)
+            ->setTotalCrawlLimit(5)
+            ->ignoreRobots()
             ->startCrawling($url);
 
         return redirect()->route('crawl.results', ['search' => $search->id]);
@@ -56,5 +52,4 @@ class CrawlerController extends Controller
         $failedCrawls = $search->failedCrawls; // Make sure you have a relationship defined for this
         return view('panel.user.crawler.results', compact('crawledData', 'failedCrawls'));
     }
-
 }

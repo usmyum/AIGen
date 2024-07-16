@@ -32,23 +32,23 @@ class CustomCrawlObserver extends CrawlObserver
     }
 
     public function crawled(
-        UriInterface $url,
+        UriInterface      $url,
         ResponseInterface $response,
-        ?UriInterface $foundOnUrl = null
+        ?UriInterface     $foundOnUrl = null
     ): void
     {
+        Log::info('Crawled URL: ' . (string)$url);
+        Log::info('Response Status Code: ' . $response->getStatusCode());
+
         $html = (string)$response->getBody();
         $crawler = new DomCrawler($html);
 
         foreach ($this->keywords as $keyword) {
-            $nodes = $crawler->filter('body')->filterXPath("//*[contains(text(), '$keyword')]");
-
-            $nodes->each(function (DomCrawler $node) use ($url, $keyword) {
-                if ($this->isRelevantContent($node, $keyword)) {
-                    $content = substr($node->text(), 0, 255);
+            $crawler->filter('body')->each(function (DomCrawler $node) use ($keyword, $url) {
+                if (stripos($node->text(), $keyword) !== false) {
                     CrawledData::create([
                         'search_id' => $this->search->id,
-                        'content' => $content,
+                        'content' => substr($node->text(), 0, 255),
                         'url' => (string)$url,
                     ]);
                 }
@@ -60,12 +60,6 @@ class CustomCrawlObserver extends CrawlObserver
         if ($this->crawledCount >= $this->maxCrawlCount) {
             $this->abortCrawl();
         }
-    }
-
-    private function isRelevantContent(DomCrawler $node, $keyword): bool
-    {
-        $content = $node->text();
-        return stripos($content, $keyword) !== false && stripos($content, 'function') === false;
     }
 
     public function crawlFailed(UriInterface $url, RequestException $requestException, ?UriInterface $foundOnUrl = null): void
@@ -92,6 +86,7 @@ class CustomCrawlObserver extends CrawlObserver
 
     private function abortCrawl()
     {
+        Log::warning('Maximum crawl count reached. Aborting crawl.');
         throw new \Exception('Maximum crawl count reached. Aborting crawl.');
     }
 }
