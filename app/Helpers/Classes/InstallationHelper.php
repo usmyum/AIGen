@@ -238,12 +238,6 @@ class InstallationHelper
                 'table' => 'openai',
                 'sql' => [
                     [
-                        'condition' => Models\OpenAIGenerator::where('slug', 'ai_article_wizard_generator')->count() === 0,
-                        'files' => [
-                            'dev_tools/ai_wizard.sql',
-                        ],
-                    ],
-                    [
                         'condition' => Models\OpenAIGenerator::where('slug', 'ai_vision')->count() === 0,
                         'files' => [
                             'dev_tools/ai_vision.sql',

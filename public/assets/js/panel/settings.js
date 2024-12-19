@@ -354,7 +354,6 @@ function generalSettingsSave() {
     formData.append('feature_ai_voiceover', $("#feature_ai_voiceover").is(":checked") ? 1 : 0);
     formData.append('feature_affilates', $("#feature_affilates").is(":checked") ? 1 : 0);
     formData.append('user_api_option', $("#user_api_option").is(":checked") ? 1 : 0);
-    formData.append('feature_ai_article_wizard', $("#feature_ai_article_wizard").is(":checked") ? 1 : 0);
     formData.append('feature_ai_vision', $("#feature_ai_vision").is(":checked") ? 1 : 0);
     formData.append('feature_ai_pdf', $("#feature_ai_pdf").is(":checked") ? 1 : 0);
     formData.append('feature_ai_youtube', $("#feature_ai_youtube").is(":checked") ? 1 : 0);

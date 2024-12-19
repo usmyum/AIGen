@@ -410,7 +410,6 @@ class AdminController extends Controller
     public function toggleUpdateSettings(OpenAIGenerator $openAIGenerator, $status)
     {
         $data = [
-            'ai_article_wizard_generator' => 'feature_ai_article_wizard',
             'ai_writer' => 'feature_ai_writer',
             'ai_rewriter' => 'feature_ai_rewriter',
             'ai_chat_image' => 'feature_ai_chat_image',
